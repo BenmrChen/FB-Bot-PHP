@@ -40,14 +40,7 @@ Route::get('/webhook', function () {
 
 Route::post('/webhook', function (Request $request) {
     \Illuminate\Support\Facades\Log::info((string)$request);
-//    $body = $request->object;
-//    dd($body);
-//    $body = request()->input();
-//    dd(gettype($body));
-//    \Illuminate\Support\Facades\Log::info()
-//    if($body['object'] == 'page') {
-//        dd($body['object']);
-//    }
+
     $body = request()->input();
     if ($request->object == 'page') {
         foreach ($request->entry as $entry) {
