@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
+use GuzzlHttp\Client;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use GuzzleHttp\Client;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -84,9 +86,11 @@ function callSendAPI($sender_psid, $response)
 //    $myBody['name'] = "Demo";
 //    $request = $client->post($uri, ['body' => $myBody]);
 //    $response = $request->send();
+
     $access_token = env('access_token');
     $client->post($uri, [
         GuzzleHttp\RequestOptions::QUERY=>["access_token"=>$access_token],
+
         GuzzleHttp\RequestOptions::JSON => $request_body
     ]);
 }
